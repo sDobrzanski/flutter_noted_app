@@ -22,7 +22,7 @@ class NotesStream extends StatelessWidget {
           return ListView(
             children: items.data!.map((dynamic item) {
               return OpenContainer(
-                transitionDuration: Duration(milliseconds: 1500),
+                transitionDuration: Duration(milliseconds: 700),
                 closedElevation: 0,
                 openElevation: 0,
                 openBuilder: (context, _) => DetailsScreen(

@@ -17,11 +17,11 @@ class ItemService {
         var doc = event.docs[i];
         items.add(
           Item(
-            DateTime.fromMillisecondsSinceEpoch(doc.data()['created'],
+            DateTime.fromMillisecondsSinceEpoch(doc.data()!['created'],
                 isUtc: true),
-            doc.data()['name'],
-            doc.data()['note'],
-            doc.data()['url'],
+            doc.data()!['name'],
+            doc.data()!['note'],
+            doc.data()!['url'],
           ),
         );
       }

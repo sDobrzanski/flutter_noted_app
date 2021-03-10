@@ -47,7 +47,7 @@ class _NotesScreenState extends State<NotesScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: OpenContainer(
-                transitionDuration: Duration(milliseconds: 1500),
+                transitionDuration: Duration(milliseconds: 700),
                 closedElevation: 0,
                 openElevation: 0,
                 openBuilder: (context, _) => AddNoteScreen(),

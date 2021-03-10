@@ -5,15 +5,22 @@ class AuthService {
 
   User? get user => _auth.currentUser;
 
-  Future<void> logInOrRegister(String email, String password) async {
+  Future<bool> logInOrRegister(String email, String password) async {
+    bool isLoggedIn = false;
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
+      isLoggedIn = true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
+        isLoggedIn = true;
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+        isLoggedIn = false;
       }
     }
+    return isLoggedIn;
   }
 
   Future<void> signOut() async {

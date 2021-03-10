@@ -13,28 +13,23 @@ class NoteCard extends StatelessWidget {
       required this.onTap});
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => onTap(),
-      child: Card(
-        color: Colors.lightBlueAccent[100],
-        elevation: 5,
-        shape: RoundedRectangleBorder(
-          borderRadius: kNoteBorderRad,
-        ),
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
+    return SizedBox(
+      height: 80,
+      child: GestureDetector(
+        onTap: () => onTap(),
+        child: Card(
+          color: Colors.lightBlueAccent[100],
+          elevation: 5,
+          shape: RoundedRectangleBorder(
+            borderRadius: kNoteBorderRad,
+          ),
+          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Center(
+            child: Text(
               noteName,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
             ),
-            Text(noteDesc != null ? '${noteDesc!.substring(0, 1)}...' : ''),
-            Text(
-              noteLink != null ? '${noteLink!.substring(0, 1)}...' : '',
-              style: TextStyle(color: Colors.blue[800]),
-            ),
-          ],
+          ),
         ),
       ),
     );

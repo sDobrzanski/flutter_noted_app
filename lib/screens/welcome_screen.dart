@@ -36,7 +36,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         await SharedPreferences.getInstance();
                     email = prefs.getString('email');
                     Navigator.popAndPushNamed(
-                        context, email == null ? '/login' : '/notes');
+                        context,
+                        email == null
+                            ? '/login'
+                            : '/notes'); //may cause null error - to be checked
+                    //Navigator.popAndPushNamed(context, '/login');
                   },
                   color: Colors.lightBlue[300]),
             ],

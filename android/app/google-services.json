@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "903511422207",
-    "project_id": "utopia-recruitment-task",
-    "storage_bucket": "utopia-recruitment-task.appspot.com"
+    "project_number": "1074348548720",
+    "project_id": "notedapp-436ad",
+    "storage_bucket": "notedapp-436ad.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:903511422207:android:95ba2520c4f1900bbd48ca",
+        "mobilesdk_app_id": "1:1074348548720:android:834b0a8073d31582054ab5",
         "android_client_info": {
-          "package_name": "com.utopiaultimate.utopia_recruitment_task"
+          "package_name": "com.romestor.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "903511422207-kudnqsq3imk7clbv1qcpc3da48raf6nr.apps.googleusercontent.com",
+          "client_id": "1074348548720-g1tqd4i5h0qmt3iccgmq58i8ns6760fn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyALOUkoQnmJqBWRNN7oHjsN2XHP5OUKNfY"
+          "current_key": "AIzaSyB3Cm-f-NT0WQYK3wCUpOJsjG3rn1Lwyyo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "903511422207-kudnqsq3imk7clbv1qcpc3da48raf6nr.apps.googleusercontent.com",
+              "client_id": "1074348548720-g1tqd4i5h0qmt3iccgmq58i8ns6760fn.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -6,10 +6,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:utopia_recruitment_task/widgets/custom_alert_box.dart';
 import 'package:utopia_recruitment_task/widgets/animated_name.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   String? email;
+
   String? password;
+
   AuthService auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +38,9 @@ class LoginScreen extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
                 child: CustomTextField(
                     onChanged: (value) {
-                      email = value;
+                      setState(() {
+                        email = value;
+                      });
                     },
                     isPassword: false,
                     hintText: 'Enter e-mail',
@@ -41,7 +51,9 @@ class LoginScreen extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
                 child: CustomTextField(
                     onChanged: (value) {
-                      password = value;
+                      setState(() {
+                        password = value;
+                      });
                     },
                     isPassword: true,
                     hintText: 'Enter password',
@@ -50,20 +62,31 @@ class LoginScreen extends StatelessWidget {
               CustomMainButton(
                   text: 'Sign Up',
                   onPressed: () async {
-                    if (email == null || password == null) {
+                    bool? isLoggedIn;
+                    if (email != null && password != null) {
+                      isLoggedIn =
+                          await auth.logInOrRegister(email!, password!);
+                      if (isLoggedIn == true) {
+                        FocusScope.of(context).requestFocus(FocusNode());
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        prefs.setString('email', email!);
+                        Navigator.popAndPushNamed(context, '/notes');
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) => CustomAlertBox(
+                            message: "Please provide proper login data.",
+                          ),
+                        );
+                      }
+                    } else {
                       showDialog(
                         context: context,
                         builder: (BuildContext context) => CustomAlertBox(
                           message: "Please provide proper login data.",
                         ),
                       );
-                    } else {
-                      await auth.logInOrRegister(email!, password!);
-                      FocusScope.of(context).requestFocus(FocusNode());
-                      SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      prefs.setString('email', email);
-                      Navigator.popAndPushNamed(context, '/notes');
                     }
                   },
                   color: Colors.lightBlueAccent),
